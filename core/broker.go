@@ -17,7 +17,7 @@ type (
 		WalletID  string         `sql:"size:36" json:"wallet_id,omitempty"`
 		UserID    string         `sql:"size:36" json:"user_id,omitempty"`
 		Pin       string         `sql:"size:255" json:"pin,omitempty"`
-		Data      types.JSONText `sql:"type:TEXT" json:"data,omitempty"`
+		Data      types.JSONText `sql:"type:varchar(512)" json:"data,omitempty"`
 	}
 
 	BrokerStore interface {

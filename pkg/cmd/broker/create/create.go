@@ -17,9 +17,9 @@ type Options struct {
 	UserID string
 }
 
-func NewCmd(f builder.Builder) *cobra.Command {
+func NewCmd(b builder.Builder) *cobra.Command {
 	opts := Options{
-		UserID: f.Executor(),
+		UserID: b.Executor(),
 	}
 
 	cmd := &cobra.Command{
@@ -39,12 +39,12 @@ func NewCmd(f builder.Builder) *cobra.Command {
 				opts.Pin = number.RandomPin()
 			}
 
-			b, err := Execute(ctx, f.Brokers(), f.Brokerz(), opts)
+			broker, err := Execute(ctx, b.Brokers(), b.Brokerz(), opts)
 			if err != nil {
 				return err
 			}
 
-			return f.Render().BrokerCreated(cmd.OutOrStdout(), b)
+			return b.Render().BrokerCreated(cmd.OutOrStdout(), broker)
 		},
 	}
 

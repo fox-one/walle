@@ -5,10 +5,11 @@ import (
 
 	"github.com/fox-one/walle/pkg/cmd/broker"
 	"github.com/fox-one/walle/pkg/cmd/builder"
+	"github.com/fox-one/walle/pkg/cmd/migrate"
 	"github.com/spf13/cobra"
 )
 
-func NewCmd(f builder.Builder, version string) *cobra.Command {
+func NewCmd(b builder.Builder, version string) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:           "walle <command> <subcommand> [flags]",
 		Short:         "4swap mtg agent cli",
@@ -20,12 +21,12 @@ func NewCmd(f builder.Builder, version string) *cobra.Command {
 		},
 	}
 
-	cmd.AddCommand(broker.NewCmd(f))
+	cmd.AddCommand(broker.NewCmd(b))
+	cmd.AddCommand(migrate.NewCmd(b))
 	return cmd
 }
 
 const banner = `
-
    _____                                           __                                         __   
   /  |  |  ________  _  _______  ______     ______/  |_  ____   _____     ____   ____   _____/  |_ 
  /   |  |_/  ___/\ \/ \/ /\__  \ \____ \   /     \   __\/ ___\  \__  \   / ___\_/ __ \ /    \   __\

@@ -19,13 +19,14 @@ ifndef CGO_LDFLAGS
     export CGO_LDFLAGS := $(LDFLAGS)
 endif
 
-PROJECT = 'github.com/cli/cli'
+PROJECT = github.com/fox-one/walle
 
 GO_LDFLAGS := -X $(PROJECT)/internal/build.Version=$(VERSION) $(GO_LDFLAGS)
 GO_LDFLAGS := -X $(PROJECT)/internal/build.Date=$(BUILD_DATE) $(GO_LDFLAGS)
 
 bin/walle-cli: $(BUILD_FILES)
 	@go build -trimpath -ldflags "$(GO_LDFLAGS)" -o "$@" ./cmd/walle-cli
+	@#[ -x "`which upx 2>/dev/null`" ] && upx -q "$@"
 
 clean:
 	rm -rf ./bin ./share

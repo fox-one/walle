@@ -6,12 +6,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewCmd(f builder.Builder) *cobra.Command {
+func NewCmd(b builder.Builder) *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "broker",
 		Short: "Manager agent brokers",
 	}
 
-	cmd.AddCommand(create.NewCmd(f))
+	cmd.AddCommand(create.NewCmd(b))
 	return cmd
 }
