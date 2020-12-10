@@ -39,7 +39,7 @@ func NewCmd(b builder.Builder) *cobra.Command {
 				opts.Pin = number.RandomPin()
 			}
 
-			broker, err := Execute(ctx, b.Brokers(), b.Brokerz(), opts)
+			broker, err := Run(ctx, b.Brokers(), b.Brokerz(), opts)
 			if err != nil {
 				return err
 			}
@@ -54,7 +54,7 @@ func NewCmd(b builder.Builder) *cobra.Command {
 	return cmd
 }
 
-func Execute(
+func Run(
 	ctx context.Context,
 	brokers core.BrokerStore,
 	brokerz core.BrokerService,

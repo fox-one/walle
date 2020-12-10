@@ -41,3 +41,5 @@ func NoArgsQuoteReminder(cmd *cobra.Command, args []string) error {
 
 	return errors.New(errMsg)
 }
+
+func AnyArgs(cmd *cobra.Command, args []string) error { return nil }

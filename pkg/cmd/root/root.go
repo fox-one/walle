@@ -6,6 +6,7 @@ import (
 	"github.com/fox-one/walle/pkg/cmd/broker"
 	"github.com/fox-one/walle/pkg/cmd/builder"
 	"github.com/fox-one/walle/pkg/cmd/migrate"
+	"github.com/fox-one/walle/pkg/cmdutil"
 	"github.com/spf13/cobra"
 )
 
@@ -16,6 +17,7 @@ func NewCmd(b builder.Builder, version string) *cobra.Command {
 		SilenceErrors: true,
 		SilenceUsage:  true,
 		Version:       version,
+		Args:          cmdutil.AnyArgs,
 		Run: func(cmd *cobra.Command, args []string) {
 			_, _ = fmt.Fprint(cmd.ErrOrStderr(), banner)
 		},

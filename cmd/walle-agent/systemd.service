@@ -1,0 +1,15 @@
+[Unit]
+Description=Walle Agent
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+Restart=always
+StartLimitIntervalSec=10
+StartLimitBurst=10
+RestartSec=1s
+ExecStart= /path/bin --debug
+
+[Install]
+WantedBy=multi-user.target

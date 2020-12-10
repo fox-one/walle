@@ -6,7 +6,7 @@ import (
 	"github.com/fox-one/mixin-sdk-go"
 	"github.com/fox-one/pkg/store/db"
 	"github.com/fox-one/pkg/uuid"
-	"github.com/fox-one/walle/cmd/walle-cli/config"
+	"github.com/fox-one/walle/cmd/walle-agent/config"
 	"github.com/fox-one/walle/core"
 	"github.com/fox-one/walle/pkg/cmd/builder"
 )
@@ -33,7 +33,7 @@ func (b *cliBuilder) DB() *db.DB {
 	defer b.mux.Unlock()
 
 	if b.db == nil {
-		b.db = db.MustOpen(b.cfg.DB)
+		b.db = provideDatabase(b.cfg)
 	}
 
 	return b.db
@@ -51,7 +51,7 @@ func (b *cliBuilder) MixinClient() *mixin.Client {
 }
 
 func (b *cliBuilder) Brokers() core.BrokerStore {
-	return provideBrokerStore(b.DB(), b.cfg.Broker.PinSecret)
+	return provideBrokerStore(b.DB(), b.cfg)
 }
 
 func (b *cliBuilder) Brokerz() core.BrokerService {

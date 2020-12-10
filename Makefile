@@ -26,7 +26,9 @@ GO_LDFLAGS := -X $(PROJECT)/internal/build.Date=$(BUILD_DATE) $(GO_LDFLAGS)
 
 bin/walle-cli: $(BUILD_FILES)
 	@go build -trimpath -ldflags "$(GO_LDFLAGS)" -o "$@" ./cmd/walle-cli
-	@#[ -x "`which upx 2>/dev/null`" ] && upx -q "$@"
+
+bin/walle-agent: $(BUILD_FILES)
+	@go build -trimpath -ldflags "$(GO_LDFLAGS)" -o "$@" ./cmd/walle-agent
 
 clean:
 	rm -rf ./bin ./share

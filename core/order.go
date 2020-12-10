@@ -11,8 +11,8 @@ type OrderState int
 
 const (
 	_ OrderState = iota
-	orderStateRejected
-	orderStateDone
+	OrderStateRejected
+	OrderStateApproved
 )
 
 type (
@@ -27,6 +27,7 @@ type (
 		BrokerID  string          `sql:"size:36" json:"broker_id,omitempty"`
 		Amount    decimal.Decimal `sql:"type:decimal(64,8)" json:"amount,omitempty"`
 		Memo      string          `sql:"size:140" json:"memo,omitempty"`
+		MtgMemo   string          `sql:"size:200" json:"mtg_memo,omitempty"`
 	}
 
 	OrderStore interface {

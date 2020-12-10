@@ -12,13 +12,13 @@ func NewCmd(b builder.Builder) *cobra.Command {
 		Aliases: []string{"setdb"},
 		Short:   "Manager DB Tables",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return Execute(b.DB())
+			return Run(b.DB())
 		},
 	}
 
 	return cmd
 }
 
-func Execute(tx *db.DB) error {
+func Run(tx *db.DB) error {
 	return db.Migrate(tx)
 }

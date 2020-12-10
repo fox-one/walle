@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/fox-one/mixin-sdk-go"
-	"github.com/fox-one/walle/cmd/walle-cli/config"
+	"github.com/fox-one/walle/cmd/walle-agent/config"
 	"github.com/fox-one/walle/core"
+	"github.com/fox-one/walle/render/terminal"
 	"github.com/fox-one/walle/service/broker"
-	"github.com/fox-one/walle/service/render"
 )
 
 func provideMixinClient(cfg config.Config) *mixin.Client {
@@ -22,5 +22,5 @@ func provideBrokerService(client *mixin.Client) core.BrokerService {
 }
 
 func provideRender() core.Render {
-	return render.Simple()
+	return terminal.Simple()
 }

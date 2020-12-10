@@ -1,4 +1,4 @@
-package render
+package terminal
 
 import (
 	"io"
@@ -17,19 +17,15 @@ func New(templates Templates) core.Render {
 		panic(err)
 	}
 
-	return &render{
+	return &console{
 		brokerCreated: parseTemplate(templates.BrokerCreated),
 	}
 }
 
-type render struct {
+type console struct {
 	brokerCreated *template.Template
 }
 
-func (r *render) BrokerCreated(w io.Writer, broker *core.Broker) error {
-	return r.brokerCreated.Execute(w, broker)
-}
-
-func parseTemplate(tpl string) *template.Template {
-	return template.Must(template.New("-").Parse(tpl))
+func (c *console) BrokerCreated(w io.Writer, broker *core.Broker) error {
+	return c.brokerCreated.Execute(w, broker)
 }
