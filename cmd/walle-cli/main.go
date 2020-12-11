@@ -6,7 +6,9 @@ import (
 
 	"github.com/fox-one/pkg/logger"
 	"github.com/fox-one/walle/cmd/walle-agent/config"
+	"github.com/fox-one/walle/core"
 	"github.com/fox-one/walle/internal/build"
+	"github.com/fox-one/walle/pkg/cmd/builder"
 	"github.com/fox-one/walle/pkg/cmd/root"
 	"github.com/fox-one/walle/pkg/cmdutil"
 	"github.com/sirupsen/logrus"
@@ -16,11 +18,13 @@ import (
 var flags struct {
 	debug  bool
 	config string
+	perm   int
 }
 
 func init() {
 	pflag.BoolVar(&flags.debug, "debug", false, "enable debug mode")
 	pflag.StringVar(&flags.config, "config", "", "custom config file")
+	pflag.IntVar(&flags.perm, "perm", int(core.PermSystem), "custom perm")
 }
 
 func main() {
@@ -47,6 +51,7 @@ func main() {
 	}
 
 	b := newBuilder(cfg)
+	b = builder.WithPerm(b, core.Perm(flags.perm))
 	cmd := root.NewCmd(b, ver)
 	if err := cmd.ExecuteContext(ctx); err != nil {
 		log.Fatalln(err)

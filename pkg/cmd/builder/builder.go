@@ -10,6 +10,7 @@ type Builder interface {
 	Brokers() core.BrokerStore
 	Brokerz() core.BrokerService
 	Render() core.Render
+	Perm() core.Perm
 	Executor() string
 	TraceID() string
 }

@@ -11,6 +11,7 @@ import (
 	"github.com/fox-one/pkg/logger"
 	"github.com/fox-one/walle/core"
 	"github.com/fox-one/walle/pkg/cmd/root"
+	"github.com/fox-one/walle/pkg/cmdutil"
 	"github.com/google/shlex"
 )
 
@@ -75,10 +76,12 @@ func (w *Blaze) OnMessage(ctx context.Context, msg *mixin.MessageView, userID st
 		brokers: w.brokers,
 		brokerz: w.brokerz,
 		render:  w.render,
+		perm:    core.PermWrite,
 		msg:     msg,
 	}
 
 	cmd := root.NewCmd(b, "")
+	cmd.Args = cmdutil.AnyArgs
 	cmd.SetArgs(args)
 	writer := &messageWriter{msg: msg}
 	cmd.SetOut(writer)

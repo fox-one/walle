@@ -12,6 +12,11 @@ func NewCmd(b builder.Builder) *cobra.Command {
 		Short: "Manager agent brokers",
 	}
 
-	cmd.AddCommand(create.NewCmd(b))
+	perm := b.Perm()
+
+	if perm.Write() {
+		cmd.AddCommand(create.NewCmd(b))
+	}
+
 	return cmd
 }

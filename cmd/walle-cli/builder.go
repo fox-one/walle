@@ -69,3 +69,7 @@ func (b *cliBuilder) Executor() string {
 func (b *cliBuilder) TraceID() string {
 	return b.traceID
 }
+
+func (b *cliBuilder) Perm() core.Perm {
+	return core.PermSystem
+}

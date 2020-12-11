@@ -10,6 +10,7 @@ type blazeBuilder struct {
 	brokers core.BrokerStore
 	brokerz core.BrokerService
 	render  core.Render
+	perm    core.Perm
 
 	msg *mixin.MessageView
 }
@@ -36,4 +37,8 @@ func (b *blazeBuilder) Executor() string {
 
 func (b *blazeBuilder) TraceID() string {
 	return b.msg.MessageID
+}
+
+func (b *blazeBuilder) Perm() core.Perm {
+	return b.perm
 }
