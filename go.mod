@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/MakeNowJust/heredoc v1.0.0
 	github.com/asaskevich/govalidator v0.0.0-20200907205600-7a23bdc65eef
-	github.com/fox-one/4swap-sdk-go v1.0.4
+	github.com/fox-one/4swap-sdk-go v1.0.5
 	github.com/fox-one/mixin-sdk-go v1.2.3
 	github.com/fox-one/pkg v1.5.4
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510
@@ -17,6 +17,9 @@ require (
 	github.com/sirupsen/logrus v1.7.0
 	github.com/spf13/cobra v1.1.1
 	github.com/spf13/pflag v1.0.5
-	github.com/vmihailenco/msgpack/v5 v5.0.0-beta.1
-	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
+	github.com/vmihailenco/msgpack/v5 v5.1.0
+	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9 // indirect
+	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11 // indirect
+	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
+	golang.org/x/sys v0.0.0-20201211002650-1f0c578a6b29 // indirect
 )
