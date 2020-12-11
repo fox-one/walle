@@ -169,4 +169,4 @@ Temporary Items
 # End of https://www.toptal.com/developers/gitignore/api/go,macos,intellij,visualstudiocode
 
 bin
-config.*
+config.yaml
