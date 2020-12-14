@@ -46,13 +46,13 @@ func (s *orderService) Pull(ctx context.Context, checkpoint time.Time, limit int
 
 	orders := make([]*core.Order, 0, len(snapshots))
 	for _, snapshot := range snapshots {
-		orders = append(orders, convertSnapshot(snapshot, s.verifyKey))
+		orders = append(orders, convertSnapshot(snapshot, s.client.ClientID, s.verifyKey))
 	}
 
 	return orders, nil
 }
 
-func convertSnapshot(snapshot *mixin.Snapshot, key ed25519.PublicKey) *core.Order {
+func convertSnapshot(snapshot *mixin.Snapshot, clientID string, key ed25519.PublicKey) *core.Order {
 	order := &core.Order{
 		CreatedAt: snapshot.CreatedAt,
 		UserID:    snapshot.OpponentID,
@@ -63,7 +63,15 @@ func convertSnapshot(snapshot *mixin.Snapshot, key ed25519.PublicKey) *core.Orde
 		Memo:      snapshot.Memo,
 	}
 
-	if order.UserID == "" || !order.Amount.IsPositive() {
+	if order.UserID == "" {
+		return order
+	}
+
+	if !order.Amount.IsPositive() {
+		return order
+	}
+
+	if order.BrokerID == clientID {
 		return order
 	}
 

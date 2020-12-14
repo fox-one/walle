@@ -21,7 +21,7 @@ memo 生成参考 [4swap-sdk-go](https://github.com/fox-one/4swap-sdk-go/blob/ma
 {
   "ts": 1607936726300,
   "data": {
-    "members": [
+    "members": [ // 多签组成员
       "9656eacd-2fa7-4e7b-b0eb-c475c9964f78",
       "ab14736f-e595-4e65-9879-871819d390f5",
       "b856deb3-e92f-4c19-9733-ec43526f95ce",
@@ -29,14 +29,14 @@ memo 生成参考 [4swap-sdk-go](https://github.com/fox-one/4swap-sdk-go/blob/ma
       "84a4db41-4992-4d35-aac7-987f965f0302"
     ],
     "public_key": "WE2b3mzyi23SiEKEiiHy6+72LVUG9gDSEJ0d1jU+yC0=", // 用于生成 memo 加密需要的 aes key & iv 的公钥
-    "threshold": 4
+    "threshold": 4 // 多签组资产转出需要的签名数
   }
 }
 ```
 
-### gateway 的作用
+### MTG Gateway
 
-帮助 4swap 程序化交易程序无缝迁移到 4swap mtg 交易
+mtg 支付网关的作用是帮助 4swap 程序化交易程序无缝迁移到 4swap mtg 交易
 
 1. 给 gateway 机器人发送文本消息 ```broker``` 申请自己专属的 broker 钱包
 2. 将之前直接发给 4swap 机器人的转账，改成发给上面申请的 broker，broker 收到的转账之后会立即将 memo 进行编码加密之后转发到 mtg 多签地址
