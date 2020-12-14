@@ -14,7 +14,7 @@ memo 生成参考 [4swap-sdk-go](https://github.com/fox-one/4swap-sdk-go/blob/ma
 
 ### 多签转账下单
 
-通过 ```/api/info``` 拿到多签信息，然后通过 [mixin api POST /transactions](https://github.com/fox-one/mixin-sdk-go/blob/master/transaction_raw.go#L42) 转账。
+通过 ```/api/info``` 拿到多签信息，然后通过 mixin api [POST /transactions](https://github.com/fox-one/mixin-sdk-go/blob/master/transaction_raw.go#L42) 转账。
 
 ```json5
 // /api/info
