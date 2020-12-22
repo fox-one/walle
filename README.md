@@ -1,5 +1,6 @@
 # WALLE
-4swap mtg gateway（4swap mtg 程序化交易支付网关）
+4swap mtg gateway（4swap mtg 程序化交易支付网关）。只需要申请一个 broker，将之前发给 4swap 机器人的转账发给这个 broker，memo 等都不需要改变，
+即可完成 4swap mtg 下单。 
 
 ### MTG Memo
 
