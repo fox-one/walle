@@ -15,24 +15,26 @@ memo 生成参考 [4swap-sdk-go](https://github.com/fox-one/4swap-sdk-go/blob/ma
 
 ### 多签转账下单
 
-通过 ```/api/info``` 拿到多签信息，然后通过 mixin api [POST /transactions](https://github.com/fox-one/mixin-sdk-go/blob/master/transaction_raw.go#L42) 转账。
+通过 ```https://f1-mtgswap-api.firesbox.com/api/info``` 拿到多签信息，然后通过 mixin api [POST /transactions](https://github.com/fox-one/mixin-sdk-go/blob/master/transaction_raw.go#L42) 转账。
 
 ```json5
 // /api/info
 {
-  "ts": 1607936726300,
+  "ts": 1608836959157,
   "data": {
-    "members": [ // 多签组成员
-      "9656eacd-2fa7-4e7b-b0eb-c475c9964f78",
-      "ab14736f-e595-4e65-9879-871819d390f5",
-      "b856deb3-e92f-4c19-9733-ec43526f95ce",
-      "229fc7ac-9d09-4a6a-af5a-78f7439dce76",
-      "84a4db41-4992-4d35-aac7-987f965f0302"
+    // 节点成员 client id
+    "members": [
+      "a753e0eb-3010-4c4a-a7b2-a7bda4063f62",
+      "099627f8-4031-42e3-a846-006ee598c56e",
+      "aefbfd62-727d-4424-89db-ae41f75d2e04",
+      "d68ca71f-0e2c-458a-bb9c-1d6c2eed2497",
+      "e4bc0740-f8fe-418c-ae1b-32d9926f5863"
     ],
-    "public_key": "WE2b3mzyi23SiEKEiiHy6+72LVUG9gDSEJ0d1jU+yC0=", // 用于生成 memo 加密需要的 aes key & iv 的公钥
-    "threshold": 4 // 多签组资产转出需要的签名数
+    "public_key": "dt351xp3KjNlVCMqBYUeUSF45upCEiReSZAqcjcP/Lc=", // 用于生成 memo 加密需要的 aes key & iv 的公钥
+    "threshold": 3 // 多签组资产转出需要的签名数
   }
 }
+
 ```
 
 ### MTG Gateway
