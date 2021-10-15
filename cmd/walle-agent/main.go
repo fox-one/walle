@@ -110,6 +110,8 @@ func main() {
 		g.Go(func() error { return w.Run(ctx) })
 	}
 
+	log.Printf("walle agent with version %q launched!\n", ver)
+
 	if err := g.Wait(); err != nil {
 		log.Fatalln("program terminated:", err)
 	}
